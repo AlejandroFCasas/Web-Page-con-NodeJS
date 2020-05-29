@@ -4,11 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node src",
+    "start": "node src/index", 
     "dev": "nodemon src"
   },
+  "engines": {
+    "node": "5.0.0",
+    "npm": "4.6.1"
+    },
   "keywords": [],
-  "author": "",
+  "author": "Alejandro Casas",
   "license": "ISC",
   "dependencies": {
     "ejs": "^3.1.3",
