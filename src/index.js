@@ -1,37 +1,53 @@
-/*const express = require('express');
+/*
+
+
+
 const app = express();
-const path = require ('path')
 
+// settings
+app.set('port', process.env.PORT || 3000);
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 
-app.set ('port', 5000);
-app.set('views', path.join(__dirname,'views'));
-app.engine ('html',require('ejs').renderFile);//a todos los html renderizarlos en ejs
-app.set ('view engine', 'ejs');
+// middlewares
+app.use(morgan('dev'));
 
+// routes
+app.use(require('./routes'));
 
-//routes
-app.use (require('./routes'));
-//app.use (require('./routes/index'));
-//static files
-app.use(express.static(path.join(__dirname,'public'))); 
-
-
-
-//listening the server
+// listening the Server
 app.listen(app.get('port'), () => {
-    console.log('server:', app.get ('port'));
+  console.log('Server on port', app.get('port'));
 });
+
 */
 const express = require('express');
+const morgan = require('morgan');
+const path = require('path');
 const app = express();
 
-app.use(express.json());
+// settings
+app.set('port', process.env.PORT || 3000);
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 
 
 
-app.get('/', (req,res) => {
-    res.send('Welcome to Daily Code Buffer in Heroku Auto Deployment!!');
-})
+app.set('views', __dirname + '/views');
+app.engine('html', require('ejs').renderFile);
 
-const port = process.env.PORT || '5000';
+
+// middlewares
+app.use(morgan('dev'));
+
+// routes
+app.use(require('./routes'));
+
+// static files
+app.use(express.static(path.join(__dirname, 'public')));
+
+// listening the Server
+
+
+const port = process.env.PORT || '3000';
 app.listen(port, () => console.log(`Server started on Port ${port}`));
