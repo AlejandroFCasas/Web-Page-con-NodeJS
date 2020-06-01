@@ -34,7 +34,9 @@ app.set('view engine', 'ejs');
 
 
 app.set('views', __dirname + '/views');
+
 app.engine('html', require('ejs').renderFile);
+
 
 
 // middlewares
@@ -42,6 +44,7 @@ app.use(morgan('dev'));
 
 // routes
 app.use(require('./routes'));
+
 
 // static files
 app.use(express.static(path.join(__dirname, 'public')));
