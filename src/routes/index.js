@@ -28,6 +28,15 @@ router.get ('/proyectoAlco/12Creditos', (req, res) => {
 router.get ('/proyectoTareas/index', (req, res) => {
     res.render('proyectoTareas/index.html', {title: 'Proyecto Tareas'});
 });
+
+router.get('/download', function(req, res){ 
+    var file = __dirname + '/CVCasasAlejandro.pdf'; 
+    res.download(file); // Set disposition and send it. });
+});
+
+
+
+
 module.exports = router;
 
 
