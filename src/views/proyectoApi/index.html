@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><%=title %></title>
+</head>
+
+
+    <!--insertar codigo JS-->
+    <%- include ('../partials/head.html') %>
+</head>
+<!--arreglar navegacion ctrl K + ctrl F-->
+<body>
+    <%- include ('../partials/navigation.html') %>
+<br>
+<h4><center>
+    <div id ='buscar'>
+
+        <form action="" id="form">
+              <input type="text" name ="numero" id ='numero' placeholder="Ingrese un numero"><br>
+              <button type="button" onclick="getData()">enviar</button>
+            
+          </form>
+    </div></center>
+</h4>
+    <center><div id ='element'></div></center>
+    <br>
+    <script type="text/javascript">
+
+
+console.log(numero);
+var getData = function () {
+    var numero = document.getElementById("numero").value;
+
+
+console.log(numero);
+    if (numero > 807)
+    {
+        console.log("numero muy grande, tiene que ser menor a 807");
+        {
+    let element = document.getElementById('element')
+    element.innerHTML=  
+    `   <div class="col-lg-4 text-center">
+    <p><h2>Nombre Pokemon: </h2>${data.name} </p>
+    <p>Numero: ${data.id} </p>
+    <img src ='${data.sprites.front_default}'/></div>`;
+}
+    }
+const url = `https://pokeapi.co/api/v2/pokemon/${numero}/` //de 1 a 807//
+
+    
+fetch(url)
+.then(response => response.json())
+.then (data => {
+    let element = document.getElementById('element')
+    element.innerHTML=  
+    `   <h3><div class="col-lg-4 text-center">
+    <p>Nombre: ${data.name} </p>
+    
+    <p>Numero: ${data.id} </p>
+    <img src ='${data.sprites.front_default}'width="333" height="333" /></div></h3>`;
+})
+.catch(err=> console.log(err));
+}
+    </script>
+    
+ 
+    
+    <!--seccion one-->
+
+<%- include ('../partials/footer.html') %>
+
+
+</body>
+
+</html>
