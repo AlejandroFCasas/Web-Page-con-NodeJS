@@ -7,9 +7,6 @@ const listaTareas = document.getElementById('lista-tareas');
 //buscar si hay tarea duplicada al momento de ingresar una nueva tarea
 
 
-
-
-
 // event Listeners
 
 eventListeners();
